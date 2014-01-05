@@ -9,8 +9,10 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
+	'refreshed-advert' => 'Advertisement',
 	'refreshed-article' => 'article:$1',
-	'refreshed-advert' => 'Advert'
+	'refreshed-back' => 'Back to "$1"',
+	'refreshed-you' => 'You',
 );
 
 /** Message documentation */
@@ -20,12 +22,20 @@ $messages['qqq'] = array(
 	'refreshed-advert' => 'The header, shown above the footer advert'
 );
 
-/** Finnish (suomi) */
-$messages['fi'] = array(
-	'refreshed-article' => 'artikkeli:$1',
+/** German (Deutsch) **/
+$messages['de'] = array(
+	'refreshed-article' => 'Seite:$1',
+	'refreshed-advert' => 'Werbung'
 );
 
-/** Vietnamese **/
+/** Finnish (suomi) */
+$messages['fi'] = array(
+	'refreshed-advert' => 'Mainos',
+	'refreshed-article' => 'artikkeli:$1',
+	'refreshed-back' => 'Takaisin sivulle "$1"',
+);
+
+/** Vietnamese (Tiếng Việt) **/
 $messages['vi'] = array(
 	'refreshed-article' => 'Bài viết:$1',
 );

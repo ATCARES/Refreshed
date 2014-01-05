@@ -4,7 +4,6 @@ var Refreshed = {
 	i: 0,
 	user: false,
 	header: false,
-	left: false,
 	right: false,
 
 	getHeight: function( self ) {
@@ -52,9 +51,9 @@ var Refreshed = {
 			var newHeight = $( '#leftbar-bottom div' ).outerHeight() + overlap;
 
 			if ( newHeight <= 50 ) {
-				$('#leftbar-bottom').css( 'visibility', 'hidden' );
+				$( '#leftbar-bottom' ).css( 'visibility', 'hidden' );
 			} else {
-				$('#leftbar-bottom').css( 'visibility', 'visible' );
+				$( '#leftbar-bottom' ).css( 'visibility', 'visible' );
 			}
 
 			$( '#leftbar-bottom' ).height( newHeight );
@@ -68,7 +67,7 @@ var Refreshed = {
 			$( window ).scroll( Refreshed.onScroll );
 
 		} else {
-			$("#leftbar-bottom").css({'visibility': 'visible'});
+			$( '#leftbar-bottom' ).css({'visibility': 'visible'});
 
 			$( '#leftbar-bottom' ).height( 'auto' );
 			$( '#leftbar-bottom' ).css( {
@@ -93,16 +92,6 @@ var Refreshed = {
 		Refreshed.header = !Refreshed.header;
 	},
 
-	toggleLeft: function() {
-		if ( Refreshed.left ) {
-			$( '#leftbar' ).animate({'left': '-12em'});
-		} else {
-			$( '#leftbar' ).animate({'left': '0em'});
-		}
-		$( '#leftbar .shower' ).fadeToggle();
-		Refreshed.left = !Refreshed.left;
-	},
-
 	toggleRight: function() {
 		if ( Refreshed.right ) {
 			$( '#rightbar' ).animate({'right': '-12em'});
@@ -121,10 +110,6 @@ var Refreshed = {
 		goTo = goTo + $( '#refreshed-toc a' ).height();
 
 		$( '#leftbar-bottom' ).stop().animate( {'scrollTop': goTo}, 200 );
-	},
-
-	rightbar: function() {
-		$( '#rightbar-top' ).height( $( window ).height() - $( '#rightbar-top' ).position().top - 8 );
 	}
 };
 
@@ -164,24 +149,11 @@ $( document ).ready( function() {
 		Refreshed.toggleSite();
 	});
 
-	$( '#leftbar .shower' ).click( function() {
-		Refreshed.toggleLeft();
-		if ( Refreshed.right ) {
-			Refreshed.toggleRight();
-		}
-	});
-
 	$( '#rightbar .shower' ).click( function() {
 		Refreshed.toggleRight();
-		if ( Refreshed.left ) {
-			Refreshed.toggleLeft();
-		}
 	});
 
 	$( '#contentwrapper' ).click( function() {
-		if ( Refreshed.left ) {
-			Refreshed.toggleLeft();
-		}
 		if ( Refreshed.right ) {
 			Refreshed.toggleRight();
 		}
@@ -192,29 +164,18 @@ $( document ).ready( function() {
 			Refreshed.toggleHeader();
 		}
 	});
-	$("#smalltoolboxwrapper > a").click(function(){
-		$("#smalltoolbox").animate({'width': '100%'});
-		$(this).css({'display': 'none'});
+
+	$( '#toolbox-link' ).click( function() {
+		$( '#toolbox' ).fadeToggle();
+		$( this ).children().toggleClass( 'rotate' );
+	});
+	$( '#toolbox-link' ).hover( function() {
+		$( this ).children().toggleClass( 'no-show' );
 	});
 
-	$("#smalltoolboxwrapper > a").click(function(){
-			$("#smalltoolbox").animate({'width': '100%'});
-			$(this).css({'display': 'none'});
-	});
-
-	$( window ).resize( Refreshed.rightbar );
-	Refreshed.rightbar();
-
-	$( "#toolbox-link" ).click( function() {
-		$("#toolbox").fadeToggle();
-		$(this).children().toggleClass( 'rotate' );
-	});
-	$( "#toolbox-link" ).hover( function() {
-		$(this).children().toggleClass( 'no-show' );
-	})
-
-	$("#smalltoolboxwrapper > a").click(function(){
-    	$("#smalltoolbox").animate({'width': '100%'});
-		$(this).css({'display': 'none'});
+	$( '#smalltoolboxwrapper > a' ).click( function() {
+		$( '#smalltoolbox' ).css({'overflow': 'auto'});
+		$( '#smalltoolbox' ).animate({'width': '100%'});
+		$( this ).css({'display': 'none'});
 	});
 } );

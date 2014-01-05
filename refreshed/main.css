@@ -43,9 +43,12 @@ body {
 	padding-left: 0.5em;
 	margin-bottom: 0.3em;
 }
-	#title-overlay {
-		display: none;
-	}
+#title-overlay {
+	display: none;
+}
+#back-to-subject {
+	display: none;
+}
 
 #smalltoolboxwrapper {
 	display: none;
@@ -85,9 +88,19 @@ body {
 	z-index: 3;
 }
 
+/*
+ * Hide the list bullet icons. This is not terribly useful by default, but there
+ * are extensions which can add entire portlets to the sidebar, and said portlets
+ * might be using the <ul> HTML tag...
+ */
+#rightbar-top li {
+	list-style-type: none;
+}
+
 #rightbar-top {
 	overflow-y: auto;
 	width: 100%;
+	height: calc( 100% - 3.5em );
 }
 #leftbar-top, #rightbar-top {
 	position: absolute;
@@ -140,6 +153,9 @@ body {
 #leftbar-main a:hover, #rightbar-main a:hover {
 	color: #CCC;
 	cursor: pointer;
+}
+#sidebar-userlinks {
+	display: none;
 }
 #leftbar-main a:hover {
 	border-right: 5px solid #CCC;
@@ -194,18 +210,15 @@ body {
 	height: 3em;
 	cursor: pointer;
 }
-#leftbar .shower {
-	left: 12em;
-}
 #rightbar .shower {
+	/* @embed */
+	background-image: url("images/icon-rightbar.png");
+	right: 12.5em;
+	background-size: 48px 48px;
+	width: 48px;
 	height: 48px;
-	right: 12em;
-	background-image: url("images/mobile-icon-sprite.png");
-    background-size: 422px 28px;
-    background-repeat: no-repeat;
-    background-position: 0;
-    margin-right: 0;
 }
+
 #refreshed-toc {
 	position: relative;
 }
@@ -448,7 +461,7 @@ h6 {
 }
 
 .printfooter {
-	display:none;
+	display: none;
 }
 
 #cats {
